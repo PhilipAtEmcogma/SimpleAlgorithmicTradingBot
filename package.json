@@ -1,0 +1,19 @@
+{
+  "name": "simpletradingbot",
+  "version": "1.0.0",
+  "description": "this is a simple algorithmic trading bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhilipAtEmcogma/SimpleAlgorithmicTradingBot.git"
+  },
+  "author": "Philip",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PhilipAtEmcogma/SimpleAlgorithmicTradingBot/issues"
+  },
+  "homepage": "https://github.com/PhilipAtEmcogma/SimpleAlgorithmicTradingBot#readme"
+}

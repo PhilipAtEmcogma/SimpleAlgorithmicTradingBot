@@ -1,5 +1,6 @@
 //node-fetch is a package that crypto compare API needs
-global.fetch = require("node-fetch");
+//global.fetch = require("node-fetch");
+const fetch = require("./fetch");
 const GeminiAPI=require("gemini-api").default;
 
 //following secret and key are obtained from Gemini sandbox API
@@ -49,3 +50,8 @@ restClient.getOrderBook("btcusd")
 .then(response => console.log(response))
 .catch(error => console.log(error));
 */
+
+CryptoCompareAPI.coinList()
+.then(coinList => {
+    console.log(coinList)
+})

@@ -1,15 +1,23 @@
+//node-fetch is a package that crypto compare API needs
+global.fetch = require("node-fetch");
 const GeminiAPI=require("gemini-api").default;
 
 //following secret and key are obtained from Gemini sandbox API
-//it is removed after this project is completed
-//if you want to use this code, please create your own API from the exchange of your choice.
+//API will be deleted after this project is completed
 var secret = "3Bwotuqa9gf7DrQynTBFT9cgQZrV";
 var key = "account-clLe7J8K0HBj0o1KTUeu";
+
+//API key from cryptocompare.com account, api will be deleted from the site after this project is completed.
+var cryptocompareAPIkey = "32f0dbb35997cc3b5226f29a30a5cfee604ee04fcf47d49e03ecc3dbc548c320";
 
 //initialise restClient, which makes the interaction with Gemini API (a rest API) easier
 //restClient is use to ensure it is a valide function request, construct the request and waits for the response
 //sandbox:true is to ensure to trade with play money, not real money
 const restClient = new GeminiAPI({key,secret,sandbox:true});
+
+//creating crypto compare api client
+const CryptoCompareAPI = require("cryptocompare");
+CryptoCompareAPI.setApiKey(cryptocompareAPIkey);
 
 /*
 //excute an order

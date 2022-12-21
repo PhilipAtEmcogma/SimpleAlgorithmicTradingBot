@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/PhilipAtEmcogma/SimpleAlgorithmicTradingBot#readme",
   "dependencies": {
-    "gemini-api": "^2.0.4"
+    "cryptocompare": "^1.0.0",
+    "gemini-api": "^2.0.4",
+    "node-fetch": "^3.3.0"
   }
 }

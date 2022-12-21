@@ -1,5 +1,5 @@
 //node-fetch is a package that crypto compare API needs
-//global.fetch = require("node-fetch");
+//global.fetch = require("node-fetch"); //<-this method of importing node-fetch didn't work anymore, but found a work around from stack overflow.
 const fetch = require("./fetch");
 const GeminiAPI=require("gemini-api").default;
 
@@ -51,7 +51,19 @@ restClient.getOrderBook("btcusd")
 .catch(error => console.log(error));
 */
 
+/*
+//print token list and info
 CryptoCompareAPI.coinList()
 .then(coinList => {
     console.log(coinList)
 })
+*/
+
+/*
+//display token price at a particular currency, in this case, show btc price in usd and eur
+CryptoCompareAPI.price('BTC',['USD','EUR'])
+.then(prices => {
+    console.log(prices)
+})
+.catch(console.error)
+*/

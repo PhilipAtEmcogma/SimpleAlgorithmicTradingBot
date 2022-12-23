@@ -67,3 +67,31 @@ CryptoCompareAPI.price('BTC',['USD','EUR'])
 })
 .catch(console.error)
 */
+
+//build a 100 hour MA strategy as a function
+function movingAverage(cryptoAsset,fiatcurrency,hours,callback){
+
+    //get data from crypto compare, unless specified histoHour gives 169 hours by default
+    if(hours >169){
+        console.log("Only up to 169 hours allowed!");
+        return;
+    }
+    CryptoCompareAPI.histoHour(cryptoAsset,fiatcurrency)
+    .then(data => {
+        //extract 100 hourly data and calculate the moving average
+        data = data.reverse() //without this line, data will start from the data 169 hours ago to the latest one. with this start with the latest one and progress to the oldest one
+        var sum = 0;
+        for(var i = 0; i<hours; i++){
+            sum+=data[i].close;
+        }
+
+        var movingAverage = sum/hours;
+        callback(movingAverage);
+    })
+    .catch(console.error)
+}
+
+//calling the function
+movingAverage("BTC","USD",100,function(result){
+    console.log("MA: "+result);
+});

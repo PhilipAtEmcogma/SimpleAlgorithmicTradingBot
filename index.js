@@ -68,6 +68,14 @@ CryptoCompareAPI.price('BTC',['USD','EUR'])
 
 
 //calling the function
+indicators.minuetMovingAverage("BTC","USD",100,function(result){
+    console.log("Minuet MA: "+result);
+});
+
 indicators.hourlyMovingAverage("BTC","USD",100,function(result){
-    console.log("MA: "+result);
+    console.log("Hourly MA: "+result);
+});
+
+indicators.dailyMovingAverage("BTC","USD",30,function(result){
+    console.log("Daily MA:",result)
 });

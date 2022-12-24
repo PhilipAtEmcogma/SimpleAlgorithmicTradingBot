@@ -11,7 +11,7 @@ var secret = "3Bwotuqa9gf7DrQynTBFT9cgQZrV";
 var key = "account-clLe7J8K0HBj0o1KTUeu";
 
 module.exports = {
-    marketBuy:function(symbol){
+    marketBuyBTC:function(){
         //Gemini API doesn't support market buy, but have a very aggressive limit buy price
         //i.e. a number very high limit buy above for buy, and a number very low limit sell below for sell,
         //it arguably achieve market buy/sell
@@ -19,7 +19,19 @@ module.exports = {
             amount:1,
             price:100000,
             side:"buy",
-            symbol: symbol,
+            symbol: btcusd,
             options:["immediate-or-cancel"]})    
+    },
+
+    marketSellBTC:function(){
+                //Gemini API doesn't support market buy, but have a very aggressive limit buy price
+        //i.e. a number very high limit buy above for buy, and a number very low limit sell below for sell,
+        //it arguably achieve market buy/sell
+        restClient.newOrder({
+            amount:1,
+            price:1,
+            side:"sell",
+            symbol: btcusd,
+            options:["immediate-or-cancel"]})  
     }
 }

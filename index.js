@@ -71,6 +71,6 @@ indicators.dailyMovingAverage("BTC","USD",30,function(result){
     console.log("Daily MA:",result)
 });
 
-marketBuy("btcusd")
+marketBuyBTC()
 .then(res => console.log(res))
 .catch(error =>console.log(error));

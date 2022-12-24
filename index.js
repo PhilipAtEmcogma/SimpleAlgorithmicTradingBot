@@ -1,21 +1,12 @@
 //node-fetch is a package that crypto compare API needs
 //global.fetch = require("node-fetch"); //<-this method of importing node-fetch didn't work anymore, but found a work around from stack overflow.
 const fetch = require("./fetch");
-const GeminiAPI=require("gemini-api").default;
-
-
-//following secret and key are obtained from Gemini sandbox API
-//API will be deleted after this project is completed
-var secret = "3Bwotuqa9gf7DrQynTBFT9cgQZrV";
-var key = "account-clLe7J8K0HBj0o1KTUeu";
-
-//initialise restClient, which makes the interaction with Gemini API (a rest API) easier
-//restClient is use to ensure it is a valide function request, construct the request and waits for the response
-//sandbox:true is to ensure to trade with play money, not real money
-const restClient = new GeminiAPI({key,secret,sandbox:true});
 
 //importing indicators.js where the bundled MA function is housed.
 const indicators = require("./indicators.js");
+
+//importing exchange.js, where it house the exchange key, secrets, and api call
+const exchange = require("./exchange.js");
 
 /*
 //excute an order
@@ -79,3 +70,7 @@ indicators.hourlyMovingAverage("BTC","USD",100,function(result){
 indicators.dailyMovingAverage("BTC","USD",30,function(result){
     console.log("Daily MA:",result)
 });
+
+marketBuy("btcusd")
+.then(res => console.log(res))
+.catch(error =>console.log(error));

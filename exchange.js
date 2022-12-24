@@ -7,8 +7,8 @@ const restClient = new GeminiAPI({key,secret,sandbox:true});
 
 //following secret and key are obtained from Gemini sandbox API
 //API will be deleted after this project is completed
-var secret = "3Bwotuqa9gf7DrQynTBFT9cgQZrV";
-var key = "account-clLe7J8K0HBj0o1KTUeu";
+var secret = "#";
+var key = "#";
 
 module.exports = {
     marketBuyBTC:function(){

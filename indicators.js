@@ -1,7 +1,7 @@
 //creating crypto compare api client
 const CryptoCompareAPI = require("cryptocompare");
 //API key from cryptocompare.com account, api will be deleted from the site after this project is completed.
-var cryptocompareAPIkey = "32f0dbb35997cc3b5226f29a30a5cfee604ee04fcf47d49e03ecc3dbc548c320";
+var cryptocompareAPIkey = "#";
 
 CryptoCompareAPI.setApiKey(cryptocompareAPIkey);
 

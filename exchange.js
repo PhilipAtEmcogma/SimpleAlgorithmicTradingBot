@@ -33,5 +33,9 @@ module.exports = {
             side:"sell",
             symbol: btcusd,
             options:["immediate-or-cancel"]})  
+    },
+
+    bitconPrice:function(){
+        return restClient.getTicker("btcusd");
     }
 }

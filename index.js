@@ -8,6 +8,63 @@ const indicators = require("./indicators.js");
 //importing exchange.js, where it house the exchange key, secrets, and api call
 const exchange = require("./exchange.js");
 
+var hasPosition = false; //flag for indiciating is there a trade opened
+
+var strategy = function(){
+    //if BTC < MA -> buy (if there's no existing position)
+
+    //if BTC > MA -> sell (if there's a existing position)
+
+
+    console.log("\n");
+    console.log("==========================================");
+    console.log("Executing strategy");
+
+    indicators.hourlyMovingAverage("BTC","USD",100,function(ma){
+        exchange.bitconPrice()
+        .then(res => {
+            var price = res.last; //only interest in the latest closing price       
+
+            console.log("MA: ",ma);
+            consolg.log("Price: ", price);
+
+            if(price < ma && !hasPosition){
+
+                console.log("BUY SIGNAL!");
+                exchange.marketBuyBTC()
+                .then(res =>{
+                    console.log("Buy successful");
+                    hasPosition = true;
+
+                    setTimeout(strategy,1000);//time out 1s when successfully brought before calling strategy again
+                })
+                .catch(error => console.error);
+            }
+
+            else if(price > ma && hasPosition){
+                console.log("SELL SIGNAL");
+                exchange.marketSellBTC()
+                .then(res =>{
+                    console.log("Sell successful");
+                    hasPosition = false;
+
+                    setTimeout(strategy, 1000); //timeout 1s after successfully sold before call strategy again
+                })
+            }
+
+            else{
+                console.log("HODL");
+                setTimeout(strategy, 1000);
+            }
+
+ 
+        })
+    });
+
+
+
+}
+
 /*
 //excute an order
 //amount->how many tokens to trade, price -> at what price, side -> buy/sell, symbol -> token pair to trade
@@ -57,7 +114,7 @@ CryptoCompareAPI.price('BTC',['USD','EUR'])
 */
 
 
-
+/*
 //calling the function
 indicators.minuetMovingAverage("BTC","USD",100,function(result){
     console.log("Minuet MA: "+result);
@@ -74,3 +131,4 @@ indicators.dailyMovingAverage("BTC","USD",30,function(result){
 marketBuyBTC()
 .then(res => console.log(res))
 .catch(error =>console.log(error));
+*/

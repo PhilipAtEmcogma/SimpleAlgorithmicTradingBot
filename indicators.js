@@ -24,7 +24,7 @@ module.exports ={
                 sum+=data[i].close;
             }
 
-            var movingAverage = sum/minuets;
+            var movingAverage = Math.floor(sum/minuets);
             callback(movingAverage);
         })
         .catch(console.error)
@@ -46,7 +46,7 @@ module.exports ={
             sum+=data[i].close;
         }
 
-        var movingAverage = sum/hours;
+        var movingAverage = Math.floor(sum/hours);
         callback(movingAverage);
     })
     .catch(console.error)
@@ -67,7 +67,7 @@ dailyMovingAverage: function (cryptoAsset, fiatcurrency, daily, callback){
             sum+=data[i].close;
         }
 
-        var movingAverage = sum/daily;
+        var movingAverage = Math.floor(sum/daily);
         callback(movingAverage);
     })
     .catch(console.error)
